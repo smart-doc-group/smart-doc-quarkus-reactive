@@ -27,6 +27,9 @@ import java.util.List;
 
 import static javax.ws.rs.core.Response.Status.CREATED;
 
+/**
+ * The type person controller
+ */
 @Path("persons")
 @ApplicationScoped
 @Produces("application/json")
@@ -37,11 +40,23 @@ public class PersonResource {
     private PersonRepository personRepository;
 
 
+    /**
+     * Get all persons list.
+     *
+     * @return the list
+     */
     @GET
     public Uni<List<Person>> get() {
         return Uni.createFrom().item(personRepository.findAll());
     }
 
+
+    /**
+     * Gets persons by id.
+     *
+     * @param id the person id|1
+     * @return the persons by id
+     */
     @GET
     @Path("{id}")
     public Uni<Person> getSingle(@RestPath Long id) {
@@ -55,11 +70,24 @@ public class PersonResource {
         return Multi.createFrom().items(personRepository.findAll());
     }
 
+    /**
+     * Create person.
+     *
+     * @param person the person
+     * @return the person
+     */
     @POST
     public Uni<Response> create(Person person) {
         return Uni.createFrom().item(Response.ok(personRepository.save(person)).status(CREATED)::build);
     }
 
+    /**
+     * Update person response entity.
+     *
+     * @param id            the person id|1
+     * @param personDetails the person details
+     * @return the response entity
+     */
     @PUT
     @Path("{id}")
     public Uni<Response> update(@RestPath Long id, Person personDetails) {
@@ -71,6 +99,12 @@ public class PersonResource {
         return Uni.createFrom().item(Response.ok(personRepository.save(person)).status(CREATED)::build);
     }
 
+    /**
+     * Delete person.
+     *
+     * @param id the person id|1
+     * @return the map
+     */
     @DELETE
     @Path("{id}")
     public Uni<Response> delete(@RestPath Long id) {
