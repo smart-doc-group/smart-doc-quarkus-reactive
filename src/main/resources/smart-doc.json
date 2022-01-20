@@ -1,0 +1,15 @@
+{
+  "serverUrl": "http://localhost:8080/",
+  "outPath": "target/doc",
+  "isStrict": false,
+  "allInOne": true,
+  "coverOld": true,
+  "createDebugPage": true,
+  "style": "xt256",
+//  "packageFilters": "",
+  "md5EncryptedHtmlName": true,
+  "projectName": "smart-doc-quarkus-reactive",
+  "inlineEnum": true,
+  "skipTransientField": true,
+  "framework": "JAX-RS"
+}
